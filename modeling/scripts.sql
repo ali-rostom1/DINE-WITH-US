@@ -32,3 +32,33 @@ add (
     id_user int,
 	FOREIGN key (id_user) REFERENCES users(id_user)
 );
+
+create table dish(
+	id_dish int AUTO_INCREMENT PRIMARY key,
+    name varchar(255) NOT NULL UNIQUE,
+    description varchar(255) NOT NULL,
+    type ENUM("starter","main","dessert")
+);
+
+ALTER table users
+DROP isAdmin;
+
+CREATE table role(
+	id_role int AUTO_INCREMENT PRIMARY KEY,
+   	name ENUM("admin","user") NOT NULL
+);
+
+
+alter table users
+add ( id_role int , FOREIGN key(id_role) REFERENCES role(id_role));
+
+alter table menu 
+DROP starter , DROP main , DROP dessert;
+
+
+create table menu_dish_relation(
+	menu_id int,
+    dish_id int,
+    FOREIGN KEY(menu_id) REFERENCES menu(id_menu),
+    FOREIGN KEY(dish_id) REFERENCES dish(id_dish)
+);
