@@ -75,3 +75,12 @@ VALUES("user");
 insert into users(username,pass,email,id_role)
 VALUES("client1","client1","client1@gmail.com",2),
 ("chef1","chef1","chef1@gmail.com",1);
+
+
+
+alter table dish 
+add img_URL varchar(255) ;
+alter table menu 
+add url_img varchar(255) ;
+alter table users
+add img varchar(255);
