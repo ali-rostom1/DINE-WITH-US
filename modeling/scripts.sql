@@ -58,7 +58,20 @@ DROP starter , DROP main , DROP dessert;
 
 create table menu_dish_relation(
 	menu_id int,
-    dish_id int,
+    dish_id int ,
     FOREIGN KEY(menu_id) REFERENCES menu(id_menu),
     FOREIGN KEY(dish_id) REFERENCES dish(id_dish)
 );
+
+
+
+INSERT INTO role(name)
+VALUES("admin");
+
+INSERT INTO role(name)
+VALUES("user");
+
+
+insert into users(username,pass,email,id_role)
+VALUES("client1","client1","client1@gmail.com",2),
+("chef1","chef1","chef1@gmail.com",1);
