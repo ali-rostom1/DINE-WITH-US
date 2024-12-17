@@ -49,29 +49,29 @@
   <!-- Menu Section -->
   <section id="menu" class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-      <h2 class="text-4xl text-center font-bold mb-12">Our Menu</h2>
+      <h2 class="text-4xl text-center font-bold mb-12">Our chefs</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Menu Item 1 -->
         <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="" alt="Pizza" class="w-full h-48 object-cover mb-4 rounded">
+          <img src="assets/images/placeholder.jpg" alt="Pizza" class="w-full h-48 object-cover mb-4 rounded">
           <h3 class="text-2xl font-semibold mb-2">Classic Pizza</h3>
           <p class="text-gray-600 mb-4">Topped with fresh tomatoes, mozzarella, and basil.</p>
-          <p class="font-bold text-red-500 text-lg">$12.99</p>
         </div>
         <!-- Menu Item 2 -->
         <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="" alt="Burger" class="w-full h-48 object-cover mb-4 rounded">
+          <img src="assets/images/placeholder.jpg" alt="Burger" class="w-full h-48 object-cover mb-4 rounded">
           <h3 class="text-2xl font-semibold mb-2">Juicy Burger</h3>
           <p class="text-gray-600 mb-4">Succulent beef patty with fresh vegetables and cheese.</p>
-          <p class="font-bold text-red-500 text-lg">$9.99</p>
         </div>
         <!-- Menu Item 3 -->
         <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="" alt="Pasta" class="w-full h-48 object-cover mb-4 rounded">
+          <img src="assets/images/placeholder.jpg" alt="Pasta" class="w-full h-48 object-cover mb-4 rounded">
           <h3 class="text-2xl font-semibold mb-2">Creamy Pasta</h3>
           <p class="text-gray-600 mb-4">Rich and creamy Alfredo sauce with fresh herbs.</p>
-          <p class="font-bold text-red-500 text-lg">$10.99</p>
         </div>
+      </div>
+      <div class="flex justify-center items-center mt-5 h-20">
+        <a href="pages/menu.php" class="px-6 py-3 rounded-full bg-red-500 text-white hover:bg-red-600 transition">See All menus</a>
       </div>
     </div>
   </section>
@@ -80,12 +80,12 @@
   <section id="about" class="py-16 bg-white">
     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
       <div class="w-full md:w-1/2 mb-8 md:mb-0">
-        <img src="https://source.unsplash.com/600x400/?chef,restaurant" alt="About Us" class="w-full rounded-lg shadow-md">
+        <img src="assets/images/hero_chef.jpg" alt="About Us" class="w-full rounded-lg shadow-md">
       </div>
       <div class="w-full md:w-1/2 md:pl-12">
         <h2 class="text-4xl font-bold mb-6">About Us</h2>
         <p class="text-gray-600 leading-relaxed mb-4">
-          At Foodie's Paradise, we are passionate about bringing you the best culinary experience. Our chefs use the freshest ingredients to prepare mouthwatering dishes for all food lovers.
+          At Dine With Us, we are passionate about bringing you the best culinary experience. Our chefs use the freshest ingredients to prepare mouthwatering dishes for all food lovers.
         </p>
         <a href="#contact" class="text-red-500 font-bold hover:underline">Get in Touch →</a>
       </div>
