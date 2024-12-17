@@ -84,3 +84,5 @@ alter table menu
 add url_img varchar(255) ;
 alter table users
 add img varchar(255);
+alter table menu
+add description varchar(255) Not NULL;

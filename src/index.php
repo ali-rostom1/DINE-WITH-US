@@ -19,7 +19,7 @@
 <body class="bg-gray-100 text-gray-800">
 
   <!-- Navbar -->
-  <nav class="bg-white shadow-md fixed">
+  <nav class="bg-white shadow-md">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold text-red-500">Dine With Us</a>
       <div class="hidden md:flex space-x-6">
@@ -28,8 +28,8 @@
         <a href="#contact" class="hover:text-red-500">Contact</a>
       </div>
       <div class="hidden md:flex space-x-6">
-        <a href="#about" class="hover:text-red-500">Login</a>
-        <a href="#contact" class="hover:text-red-500">Sign up</a>
+        <a href="pages/login.php" class="hover:text-red-500">Login</a>
+        <a href="pages/register.php" class="hover:text-red-500">Sign up</a>
       </div>
       <button class="md:hidden text-red-500 focus:outline-none">☰</button>
 
@@ -53,21 +53,21 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Menu Item 1 -->
         <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="https://source.unsplash.com/400x300/?pizza" alt="Pizza" class="w-full h-48 object-cover mb-4 rounded">
+          <img src="" alt="Pizza" class="w-full h-48 object-cover mb-4 rounded">
           <h3 class="text-2xl font-semibold mb-2">Classic Pizza</h3>
           <p class="text-gray-600 mb-4">Topped with fresh tomatoes, mozzarella, and basil.</p>
           <p class="font-bold text-red-500 text-lg">$12.99</p>
         </div>
         <!-- Menu Item 2 -->
         <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="https://source.unsplash.com/400x300/?burger" alt="Burger" class="w-full h-48 object-cover mb-4 rounded">
+          <img src="" alt="Burger" class="w-full h-48 object-cover mb-4 rounded">
           <h3 class="text-2xl font-semibold mb-2">Juicy Burger</h3>
           <p class="text-gray-600 mb-4">Succulent beef patty with fresh vegetables and cheese.</p>
           <p class="font-bold text-red-500 text-lg">$9.99</p>
         </div>
         <!-- Menu Item 3 -->
         <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="https://source.unsplash.com/400x300/?pasta" alt="Pasta" class="w-full h-48 object-cover mb-4 rounded">
+          <img src="" alt="Pasta" class="w-full h-48 object-cover mb-4 rounded">
           <h3 class="text-2xl font-semibold mb-2">Creamy Pasta</h3>
           <p class="text-gray-600 mb-4">Rich and creamy Alfredo sauce with fresh herbs.</p>
           <p class="font-bold text-red-500 text-lg">$10.99</p>
