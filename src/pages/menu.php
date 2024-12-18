@@ -24,8 +24,8 @@
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="../index.php" class="text-2xl font-bold text-red-500">Dine With Us</a>
       <div class="hidden md:flex space-x-6">
-        <a href="pages/login.php" class="hover:text-red-500">Login</a>
-        <a href="pages/register.php" class="hover:text-red-500">Sign up</a>
+        <a href="login.php" class="hover:text-red-500">Login</a>
+        <a href="register.php" class="hover:text-red-500">Sign up</a>
       </div>
       <button class="md:hidden text-red-500 focus:outline-none">☰</button>
 

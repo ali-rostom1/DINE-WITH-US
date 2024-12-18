@@ -32,7 +32,6 @@
         <a href="pages/register.php" class="hover:text-red-500">Sign up</a>
       </div>
       <button class="md:hidden text-red-500 focus:outline-none">☰</button>
-
     </div>
   </nav>
 
