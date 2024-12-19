@@ -18,10 +18,10 @@
             $stmt->execute();
             $res = $stmt->get_result();
             $res = $res->fetch_assoc();
-            var_dump($res);
-            setcookie("user",$res['id_user'],time() + (86400 * 30));
-            setcookie("isChef",$res['id_role']==1 ? 'true' : 'false',time() + (86400 * 30));
 
+            setcookie("user",$res['id_user'],time() + (86400 * 30),'/');
+            setcookie("isChef",$res['id_role']==1 ? 'true' : 'false',time() + (86400 * 30),'/');
+            
             header('location: ../');
         }
     }
