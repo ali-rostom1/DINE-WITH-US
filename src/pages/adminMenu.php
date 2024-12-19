@@ -39,7 +39,12 @@
     <main class="min-h-screen w-full relative" style="background-image: url('../assets/images/admin_menu_background.jpg');">
         <div class="max-w-5xl h-full mx-auto px-4 py-4 flex flex-col items-center gap-10">
             <div class="absolute inset-0 bg-opacity-30 bg-black"></div>
-            <span class="mt-10 font-bold text-4xl text-blue-500 z-10">Menus</span>
+            <div class="flex justify-between w-[90%] mx-auto items-center mt-10 z-10">
+                <span class=" font-bold text-4xl text-blue-500 z-10">Menus</span>
+                <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="px-5 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 ">
+                    Add Menu
+                </button>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 z-10">
                 <!-- Menu Item -->
                 <div data-modal-target="choice-modal" data-modal-toggle="choice-modal" class="bg-white p-6 shadow-md rounded-lg hover:scale-110 transition duration-300">
@@ -61,7 +66,7 @@
                 </div>
             </div>
     </main>
-    <!-- Edit modal -->
+    <!-- CRUD modal -->
     <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
             <!-- Modal content -->
@@ -83,7 +88,7 @@
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2">
                             <label for="name" class="block mb-2 text-sm font-medium text-white">Name</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Menu name" required="">
+                            <input type="text" name="name" id="nameInput" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type Menu name" required="">
                         </div>
                         <div class="col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-white">Product Description</label>
