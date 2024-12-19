@@ -1,3 +1,11 @@
+<?php
+  if(isset($_COOKIE['user'])){
+    if($_COOKIE['isChef'] == "true"){
+        header('location: admin.php');
+        exit;
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

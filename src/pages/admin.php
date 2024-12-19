@@ -1,3 +1,7 @@
+<?php
+  include "redirect.php";
+  redirect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +28,7 @@
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="../" class="text-2xl font-bold text-blue-500">Dine With Us</a>
       <div class="hidden md:flex space-x-6">
-        <a href="pages/login.php" class="hover:text-blue-500">Login</a>
-        <a href="pages/register.php" class="hover:text-blue-500">Sign up</a>
+        <a href="logout.php" class="hover:text-blue-500">Logout</a>
       </div>
       <button class="md:hidden text-blue-500 focus:outline-none">☰</button>
     </div>
@@ -44,12 +47,12 @@
                 <span class="text-white font-bold text-3xl">dishes</span>
             </div>
         </a>
-        <div class="lg:w-1/6 w-1/3 h-48 bg-blue-500 rounded-md z-10 hover:scale-110 transition duration-300">
+        <a class="lg:w-1/6 w-1/3 h-48 bg-blue-500 rounded-md z-10 hover:scale-110 transition duration-300" href="adminReservation.php">
             <div class="h-full flex flex-col justify-center items-center gap-4">
             <i class="fa-solid fa-clock-rotate-left text-5xl text-white"></i>
                 <span class="text-white font-bold text-3xl">Reservations</span>
             </div>
-        </div>
+        </a>
   </main>
     
 

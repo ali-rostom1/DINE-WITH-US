@@ -1,3 +1,11 @@
+<?php
+  if(isset($_COOKIE['user'])){
+    if($_COOKIE['isChef'] == "true"){
+        header('location: pages/admin.php');
+        exit;
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,10 +35,20 @@
         <a href="#about" class="hover:text-red-500">About Us</a>
         <a href="#contact" class="hover:text-red-500">Contact</a>
       </div>
-      <div class="hidden md:flex space-x-6">
-        <a href="pages/login.php" class="hover:text-red-500">Login</a>
-        <a href="pages/register.php" class="hover:text-red-500">Sign up</a>
-      </div>
+      <?php
+        if(!isset($_COOKIE["user"])){
+          echo '
+          <div class="hidden md:flex space-x-6">
+            <a href="pages/login.php" class="hover:text-red-500">Login</a>
+            <a href="pages/register.php" class="hover:text-red-500">Sign up</a>
+          </div>';
+        }else{
+          echo '
+          <div class="hidden md:flex space-x-6">
+            <a href="pages/logout.php" class="hover:text-red-500">Logout</a>
+          </div>';
+        }
+      ?>
       <button class="md:hidden text-red-500 focus:outline-none">☰</button>
     </div>
   </nav>

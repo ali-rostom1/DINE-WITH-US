@@ -1,3 +1,7 @@
+<?php
+  include "redirect.php";
+  redirect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +34,7 @@
         <a href="#" class="text-blue-500">Reservations</a>
       </div>
       <div class="hidden md:flex space-x-6">
-        <a href="login.php" class="hover:text-blue-500">Logout</a>
+        <a href="logout.php" class="hover:text-blue-500">Logout</a>
       </div>
       <button class="md:hidden text-blue-500 focus:outline-none">☰</button>
     </div>
