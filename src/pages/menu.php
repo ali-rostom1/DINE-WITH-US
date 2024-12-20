@@ -5,6 +5,7 @@
         exit;
     }
   }
+  include "dbcon.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,35 +51,33 @@
     <!-- Dropdown menu -->
     <div id="dropdown" class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
         <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-red-500">chef1</a>
-          </li>
-          <li>
-            <a href="#" class="block px-4 py-2 hover:bg-red-500">chef2</a>
-          </li>
+          <?php
+            $sql = "SELECT us.username from users us,role rl where us.id_role=rl.id_role and rl.name = 'admin'";
+            $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
+            foreach($res as $el){
+              echo '
+                  <li>
+                    <a href="#" class="block px-4 py-2 hover:bg-red-500">'.$el["username"].'</a>
+                  </li>
+              ';
+            }
+          
+          ?>
         </ul>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Menu Item 1 -->
-        <a class="bg-white p-6 shadow-md rounded-lg" href="reservation.php">
-          <img src="../assets/images/placeholder.jpg" alt="Pizza" class="w-full h-48 object-cover mb-4 rounded">
-          <h3 class="text-2xl font-semibold mb-2">Classic Pizza</h3>
-          <p class="text-gray-600 mb-4">Topped with fresh tomatoes, mozzarella, and basil.</p>
-        </a>
-        <!-- Menu Item 2 -->
-        <a class="bg-white p-6 shadow-md rounded-lg" href="reservation.php">
-          <img src="../assets/images/placeholder.jpg" alt="Burger" class="w-full h-48 object-cover mb-4 rounded">
-          <h3 class="text-2xl font-semibold mb-2">Juicy Burger</h3>
-          <p class="text-gray-600 mb-4">Succulent beef patty with fresh vegetables and cheese.</p>
-        </a>
-        <!-- Menu Item 3 -->
-        <a class="bg-white p-6 shadow-md rounded-lg" href="reservation.php">
-          <img src="../assets/images/placeholder.jpg" alt="Pasta" class="w-full h-48 object-cover mb-4 rounded">
-          <h3 class="text-2xl font-semibold mb-2">Creamy Pasta</h3>
-          <p class="text-gray-600 mb-4">Rich and creamy Alfredo sauce with fresh herbs.</p>
-        </a>
+        <?php
+           $sql = "SELECT mn.name , mn.url_img , mn.description , us.username FROM menu mn, users us WHERE mn.id_user = us.id_user";
+           $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
+          foreach($res as $el){
+            echo '<a id="'.$el["username"].'" class="bg-white p-6 shadow-md rounded-lg">
+                    <img src="../'.$el["url_img"].'" alt="'.$el["name"].'" class="w-full h-48 object-cover mb-4 rounded">
+                    <h3 class="text-2xl font-semibold mb-2">'.$el["name"].'</h3>
+                    <p class="text-gray-600 mb-4">'.$el["description"].'.</p>
+                  </a>';
+          }
+        ?>
     </div>
   </div>
 
