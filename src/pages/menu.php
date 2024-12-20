@@ -50,14 +50,14 @@
 
     <!-- Dropdown menu -->
     <div id="dropdown" class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
-        <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton">
+        <ul class="py-2 text-sm text-white" aria-labelledby="dropdownDefaultButton" id="chefSelect">
           <?php
             $sql = "SELECT us.username from users us,role rl where us.id_role=rl.id_role and rl.name = 'admin'";
             $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
             foreach($res as $el){
               echo '
                   <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-red-500">'.$el["username"].'</a>
+                    <a class="block px-4 py-2 hover:bg-red-500">'.$el["username"].'</a>
                   </li>
               ';
             }
@@ -66,7 +66,7 @@
         </ul>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div id="cardContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <?php
            $sql = "SELECT mn.name , mn.url_img , mn.description , us.username FROM menu mn, users us WHERE mn.id_user = us.id_user";
            $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
