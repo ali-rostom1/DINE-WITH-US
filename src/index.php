@@ -68,24 +68,18 @@
     <div class="container mx-auto px-4">
       <h2 class="text-4xl text-center font-bold mb-12">Our chefs</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Menu Item 1 -->
-        <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="assets/images/placeholder.jpg" alt="Pizza" class="w-full h-48 object-cover mb-4 rounded">
-          <h3 class="text-2xl font-semibold mb-2">Classic Pizza</h3>
-          <p class="text-gray-600 mb-4">Topped with fresh tomatoes, mozzarella, and basil.</p>
-        </div>
-        <!-- Menu Item 2 -->
-        <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="assets/images/placeholder.jpg" alt="Burger" class="w-full h-48 object-cover mb-4 rounded">
-          <h3 class="text-2xl font-semibold mb-2">Juicy Burger</h3>
-          <p class="text-gray-600 mb-4">Succulent beef patty with fresh vegetables and cheese.</p>
-        </div>
-        <!-- Menu Item 3 -->
-        <div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="assets/images/placeholder.jpg" alt="Pasta" class="w-full h-48 object-cover mb-4 rounded">
-          <h3 class="text-2xl font-semibold mb-2">Creamy Pasta</h3>
-          <p class="text-gray-600 mb-4">Rich and creamy Alfredo sauce with fresh herbs.</p>
-        </div>
+        <?php
+          include "pages/dbcon.php";
+          $sql = "SELECT * FROM menu LIMIT 3";
+          $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
+          foreach($res as $el){
+            echo '<div class="bg-white p-6 shadow-md rounded-lg">
+          <img src="'.$el["url_img"].'" alt="'.$el["name"].'" class="w-full h-48 object-cover mb-4 rounded">
+          <h3 class="text-2xl font-semibold mb-2">'.$el["name"].'</h3>
+          <p class="text-gray-600 mb-4">'.$el["description"].'.</p>
+        </div>';
+          }
+        ?>
       </div>
       <div class="flex justify-center items-center mt-5 h-20">
         <a href="pages/menu.php" class="px-6 py-3 rounded-full bg-red-500 text-white hover:bg-red-600 transition">See All menus</a>

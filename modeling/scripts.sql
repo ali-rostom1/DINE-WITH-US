@@ -86,3 +86,12 @@ alter table users
 add img varchar(255);
 alter table menu
 add description varchar(255) Not NULL;
+
+
+INSERT INTO MENU(id_user,name,description,url_img) 
+VALUES(1,"menu1","menu1 is a great menu","assets/images/placeholder.jpg"),
+(1,"menu2","menu2 is a great menu","assets/images/placeholder.jpg"),
+(1,"menu3","menu3 is a great menu","assets/images/placeholder.jpg"),
+(32,"menu4","menu4 is a great menu","assets/images/placeholder.jpg"),
+(32,"menu5","menu5 is a great menu","assets/images/placeholder.jpg"),
+(32,"menu6","menu6 is a great menu","assets/images/placeholder.jpg");
