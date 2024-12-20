@@ -64,6 +64,6 @@
             <img class="object-cover w-full h-screen hidden md:block" src="../assets/images/login_img.jpg">
         </div>
     </div>
-    
+    <script src="../assets/js/login.js"></script>
 </body>
 </html>

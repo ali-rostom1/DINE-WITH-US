@@ -22,12 +22,22 @@ let passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]
 dynamicInputValidation(nameInput,nameRegex);
 dynamicInputValidation(emailInput,emailRegex);
 dynamicInputValidation(passwordInput,passRegex);
-dynamicInputValidation(confirmPassword,passRegex);
+confirmPassword.addEventListener('input',()=>{
+    if(confirmPassword.value === passwordInput.value && passwordInput.classList.contains('border-green-500')){
+        confirmPassword.classList.add('border-green-500');
+        confirmPassword.classList.remove('border-red-500');
+    }else{
+        confirmPassword.classList.add('border-red-500');
+        confirmPassword.classList.remove('border-green-500');
+    }
+});
+
 
 
 registerForm.addEventListener("submit",(event)=>{
     event.preventDefault();
-    if(inputValidation(nameInput,nameRegex) && inputValidation(emailInput,emailRegex) && inputValidation(passwordInput,passRegex) && inputValidation(confirmPassword,passRegex)){
+    if(inputValidation(nameInput,nameRegex) && inputValidation(emailInput,emailRegex) && inputValidation(passwordInput,passRegex) && passwordInput.value === confirmPassword.value){
+        
         registerForm.submit();
     }
 })
