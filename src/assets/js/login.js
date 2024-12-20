@@ -5,11 +5,9 @@ let passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]
 function dynamicInputValidation(input,regex){
     input.addEventListener('input',()=>{
         if(regex.test(input.value)){
-            input.classList.add('border-green-500');
             input.classList.remove('border-red-500');
         }else{
             input.classList.add('border-red-500');
-            input.classList.remove('border-green-500');
         }
     })
 }
