@@ -121,3 +121,6 @@ insert into reservations(status,reservation_date,id_user,id_menu)
 VALUES("Pending","2011-12-18 13:17:17",34,4),
 ("Accepted","2011-12-18 13:17:17",34,7),
 ("Declined","2011-12-18 13:17:17",34,14);
+
+alter table reservations
+add COLUMN persons int NOT NULL;

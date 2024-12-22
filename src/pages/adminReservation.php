@@ -70,7 +70,8 @@
                     <tbody>
                         <?php
                             include "dbcon.php";
-                            $sql = 'SELECT r.id_reservation,r.status,r.reservation_date,r.id_user,m.name FROM reservations r,menu m WHERE r.id_menu=m.id_menu';
+                            $currentChef = $_COOKIE["user"];
+                            $sql = "SELECT r.id_reservation,r.status,r.reservation_date,r.id_user,m.name FROM reservations r,menu m WHERE r.id_menu=m.id_menu and m.id_user=$currentChef";
                             $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
                             foreach($res as $el){
                                 $statusColor = $el['status']=="Accepted" ? "text-green-500" : ($el['status']=="Declined" ? "text-red-500" : "");
@@ -111,53 +112,6 @@
                             }
 
                         ?>
-                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                12371273614
-                            </th>
-                            <td class="px-6 py-4">
-                                1236
-                            </td>
-                            <td class="px-6 py-4">
-                                cheese Burger
-                            </td>
-                            <td class="px-6 py-4">
-                                Pending
-                            </td>
-                            <td class="px-6 py-4">
-                                22/11/2002
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center justify-between">
-                                    <a href="#" class="font-medium text-xl text-green-600 hover:underline hover:scale-150 transition duration-300"><i class="fa-solid fa-check"></i></a>
-                                    <a href="#" class="font-medium text-xl text-red-600  hover:underline hover:scale-150 transition duration-300"><i class="fa-solid fa-xmark"></i></a>
-                                    <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                12371273614
-                            </th>
-                            <td class="px-6 py-4">
-                                1236
-                            </td>
-                            <td class="px-6 py-4">
-                                cheese Burger
-                            </td>
-                            <td class="px-6 py-4">
-                                Pending
-                            </td>
-                            <td class="px-6 py-4">
-                                22/11/2002
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex justify-between items-center">
-                                    <a href="#" class="font-medium text-xl text-red-600  hover:underline hover:scale-150 transition duration-300"><i class="fa-solid fa-xmark"></i></a>
-                                    <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

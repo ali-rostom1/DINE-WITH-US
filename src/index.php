@@ -45,6 +45,7 @@
         }else{
           echo '
           <div class="hidden md:flex space-x-6">
+          <a href="pages/clientReservations.php" class="hover:text-red-500">Reservations</a>
             <a href="pages/logout.php" class="hover:text-red-500">Logout</a>
           </div>';
         }
@@ -68,16 +69,23 @@
     <div class="container mx-auto px-4">
       <h2 class="text-4xl text-center font-bold mb-12">Our menus</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <?php
-          include "pages/dbcon.php";
-          $sql = "SELECT * FROM menu LIMIT 3";
-          $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
+      <?php
+      include "pages/dbcon.php";
+           $sql = "SELECT mn.name,mn.id_menu , mn.url_img , mn.description , us.username FROM menu mn, users us WHERE mn.id_user = us.id_user LIMIT 3";
+           $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
           foreach($res as $el){
-            echo '<div class="bg-white p-6 shadow-md rounded-lg">
-          <img src="'.$el["url_img"].'" alt="'.$el["name"].'" class="w-full h-48 object-cover mb-4 rounded">
-          <h3 class="text-2xl font-semibold mb-2">'.$el["name"].'</h3>
-          <p class="text-gray-600 mb-4">'.$el["description"].'.</p>
-        </div>';
+            if ($el['url_img'] != 'assets/images/placeholder.jpg') {
+              $imageBase64 = base64_encode($el['url_img']);
+              $imageType = 'image/jpg';
+              $imageDataUrl = "data:$imageType;base64,$imageBase64";
+            }else {
+              $imageDataUrl = $el['url_img'];
+            }
+            echo '<a id="'.$el["username"].'" class="bg-white p-6 shadow-md rounded-lg" href="reservation.php?id_menu='.$el['id_menu'].'">
+                    <img src="'.$imageDataUrl.'" alt="'.$el["name"].'" class="w-full h-48 object-cover mb-4 rounded">
+                    <h3 class="text-2xl font-semibold mb-2">'.$el["name"].'</h3>
+                    <p class="text-gray-600 mb-4">'.$el["description"].'.</p>
+                  </a>';
           }
         ?>
       </div>

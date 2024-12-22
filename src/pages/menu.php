@@ -32,10 +32,21 @@
   <nav class="bg-white shadow-md">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="../index.php" class="text-2xl font-bold text-red-500">Dine With Us</a>
-      <div class="hidden md:flex space-x-6">
-        <a href="login.php" class="hover:text-red-500">Login</a>
-        <a href="register.php" class="hover:text-red-500">Sign up</a>
-      </div>
+      <?php
+        if(!isset($_COOKIE["user"])){
+          echo '
+          <div class="hidden md:flex space-x-6">
+            <a href="login.php" class="hover:text-red-500">Login</a>
+            <a href="register.php" class="hover:text-red-500">Sign up</a>
+          </div>';
+        }else{
+          echo '
+          <div class="hidden md:flex space-x-6">
+          <a href="clientReservations.php" class="hover:text-red-500">Reservations</a>
+            <a href="logout.php" class="hover:text-red-500">Logout</a>
+          </div>';
+        }
+      ?>
       <button class="md:hidden text-red-500 focus:outline-none">☰</button>
 
     </div>
@@ -68,11 +79,18 @@
 
     <div id="cardContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <?php
-           $sql = "SELECT mn.name , mn.url_img , mn.description , us.username FROM menu mn, users us WHERE mn.id_user = us.id_user";
+           $sql = "SELECT mn.name,mn.id_menu , mn.url_img , mn.description , us.username FROM menu mn, users us WHERE mn.id_user = us.id_user";
            $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
           foreach($res as $el){
-            echo '<a id="'.$el["username"].'" class="bg-white p-6 shadow-md rounded-lg">
-                    <img src="../'.$el["url_img"].'" alt="'.$el["name"].'" class="w-full h-48 object-cover mb-4 rounded">
+            if ($el['url_img'] != 'assets/images/placeholder.jpg') {
+              $imageBase64 = base64_encode($el['url_img']);
+              $imageType = 'image/jpg';
+              $imageDataUrl = "data:$imageType;base64,$imageBase64";
+            }else {
+              $imageDataUrl = '../'.$el['url_img'];
+            }
+            echo '<a id="'.$el["username"].'" class="bg-white p-6 shadow-md rounded-lg" href="reservation.php?id_menu='.$el['id_menu'].'">
+                    <img src="'.$imageDataUrl.'" alt="'.$el["name"].'" class="w-full h-48 object-cover mb-4 rounded">
                     <h3 class="text-2xl font-semibold mb-2">'.$el["name"].'</h3>
                     <p class="text-gray-600 mb-4">'.$el["description"].'.</p>
                   </a>';
