@@ -9,9 +9,16 @@
         $dishes = isset($_POST['dishes']) ? $_POST['dishes'] : [];
         $newDishes = isset($_POST['new_dishes']) ? $_POST['new_dishes'] : [];
         $menuImageContent = isset($_FILES['menu_img']) && $_FILES['menu_img']['error'] == 0 ? file_get_contents($_FILES['menu_img']['tmp_name']) : 'assets/images/placeholder.jpg';
-        $updateMenuQuery = "UPDATE menu SET name = ?,description = ?,url_img = ? WHERE id_menu = ?";
-        $stmt = $mysqli->prepare($updateMenuQuery);
-        $stmt->bind_param("sssi", $menuName, $menuDescription,$menuImageContent,$menuId);
+        if(isset($_FILES['menu_img']) && $_FILES['menu_img']['error'] == 0 ){
+            $menuImageContent=file_get_contents($_FILES['menu_img']['tmp_name']);
+            $updateMenuQuery = "UPDATE menu SET name = ?,description = ?,url_img = ? WHERE id_menu = ?";
+            $stmt = $mysqli->prepare($updateMenuQuery);
+            $stmt->bind_param("sssi", $menuName, $menuDescription,$menuImageContent,$menuId);
+        }else{
+            $updateMenuQuery = "UPDATE menu SET name = ?,description = ? WHERE id_menu = ?";
+            $stmt = $mysqli->prepare($updateMenuQuery);
+            $stmt->bind_param("ssi", $menuName, $menuDescription,$menuId);
+        }
         if($stmt->execute()){
             $selectedDishes = $_POST['dishes'];
 

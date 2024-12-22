@@ -45,7 +45,7 @@
             <div class="absolute inset-0 bg-opacity-30 bg-black"></div>
             <div class="flex justify-between w-[90%] mx-auto items-center mt-10 z-10">
                 <span class=" font-bold text-4xl text-blue-500 z-10">Menus</span>
-                <button class="px-5 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 ">
+                <button id="addMenu" class="px-5 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 ">
                     Add Menu
                 </button>
             </div>

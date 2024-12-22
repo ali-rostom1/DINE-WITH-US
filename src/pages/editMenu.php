@@ -1,11 +1,10 @@
 <?php
 include "dbcon.php";
 
-// Fetch menu details using the id from the query string
 if (isset($_GET['id_menu'])) {
     $menuId = $_GET['id_menu'];
     
-    // Fetch the menu details (name, description, etc.)
+    
     $menuQuery = "SELECT * FROM menu WHERE id_menu = ?";
     $stmt = $mysqli->prepare($menuQuery);
     $stmt->bind_param("i", $menuId);
@@ -13,8 +12,8 @@ if (isset($_GET['id_menu'])) {
     $menuResult = $stmt->get_result();
     $menuData = $menuResult->fetch_assoc();
     
-    // Fetch available dishes
-    $dishesQuery = "SELECT * FROM dish"; // Assuming dishes table holds all available dishes
+    
+    $dishesQuery = "SELECT * FROM dish"; 
     $dishesResult = $mysqli->query($dishesQuery);
     $dishes = $dishesResult->fetch_all(MYSQLI_ASSOC);
 }
@@ -33,7 +32,7 @@ if (isset($_GET['id_menu'])) {
     <div class="max-w-xl mx-auto p-8 bg-white shadow-lg rounded-lg mt-10">
         <h1 class="text-3xl font-semibold text-gray-800 mb-6">Edit Menu</h1>
         
-        <form action="processEdit.php" method="POST" enctype="multipart/form-data">
+        <form action="processEditMenu.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id_menu" value="<?php echo $menuData['id_menu']; ?>">
 
             <!-- Menu Name -->
@@ -62,10 +61,10 @@ if (isset($_GET['id_menu'])) {
                 $stmt->bind_param("i", $menuId);
                 $stmt->execute();
                 $currentDishesResult = $stmt->get_result();
-                echo '<div class="flex items-center space-x-2 overflow-x-scroll">';
+                echo '<div class="flex items-center gap-5 flex-wrap">';
                 while ($currentDish = $currentDishesResult->fetch_assoc()) {
-                    echo    '<input type="checkbox" name="dishes[]" value="'.$currentDish['id_dish'].'" checked class="form-checkbox h-5 w-5 text-blue-500">
-                            <label for="dish-'.$currentDish['id_dish'].'" class="text-lg text-gray-700">'.$currentDish['name'].'</label>';
+                    echo    '<div><input type="checkbox" name="dishes[]" value="'.$currentDish['id_dish'].'" checked class="form-checkbox h-5 w-5 text-blue-500">
+                            <label for="dish-'.$currentDish['id_dish'].'" class="text-lg text-gray-700">'.$currentDish['name'].'</label></div>';
                 }
                 $otherDishesQuery = "SELECT d.id_dish, d.name, d.type FROM dish d LEFT JOIN menu_dish_relation r ON d.id_dish = r.dish_id AND r.menu_id = ? WHERE r.dish_id IS NULL";
                 $stmt = $mysqli->prepare($otherDishesQuery);
@@ -73,8 +72,8 @@ if (isset($_GET['id_menu'])) {
                 $stmt->execute();
                 $otherDishesResult = $stmt->get_result();
                 while ($otherDish = $otherDishesResult->fetch_assoc()) {
-                    echo    '<input type="checkbox" name="dishes[]" value="'.$otherDish['id_dish'].'" class="form-checkbox h-5 w-5 text-blue-500">
-                            <label for="dish-'.$otherDish['id_dish'].'" class="text-lg text-gray-700">'.$otherDish['name'].'</label>';
+                    echo    '<div><input type="checkbox" name="dishes[]" value="'.$otherDish['id_dish'].'" class="form-checkbox h-5 w-5 text-blue-500">
+                            <label for="dish-'.$otherDish['id_dish'].'" class="text-lg text-gray-700">'.$otherDish['name'].'</label></div>';
                 }
                 echo '</div>';
                 ?>
@@ -83,12 +82,17 @@ if (isset($_GET['id_menu'])) {
             <!-- Add New Dishes Section -->
             <h3 class="text-2xl font-semibold text-gray-800 mb-4">Add New Dishes (Optional)</h3>
             <div id="new-dishes" class="space-y-3 mb-4">
-                <!-- New dishes will appear here dynamically -->
+                
             </div>
             
-            <button type="button" id="add-dish-btn" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4">
-                Add New Dish
-            </button>
+            <div class="flex justify-start gap-10">
+                <button type="button" id="add-dish-btn" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4">
+                    Add New Dish
+                </button>
+                <button type="button" id="remove-dish-btn" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4">
+                    Revert Dish
+                </button>
+            </div>
 
             <!-- Save Button -->
             <div class="flex justify-end">
@@ -102,9 +106,8 @@ if (isset($_GET['id_menu'])) {
     <script>
         document.getElementById('add-dish-btn').addEventListener('click', function() {
             var newDishContainer = document.createElement('div');
-            newDishContainer.classList.add('space-y-3', 'mb-4'); // Vertical space between inputs
+            newDishContainer.classList.add('space-y-3', 'mb-4'); 
 
-            // Create dish name input
             var newDishNameInput = document.createElement('div');
             newDishNameInput.classList.add('flex', 'flex-col');
             newDishNameInput.innerHTML = `
@@ -158,6 +161,12 @@ if (isset($_GET['id_menu'])) {
 
             // Append the new dish container to the new-dishes section
             document.getElementById('new-dishes').appendChild(newDishContainer);
+        });
+        document.getElementById('remove-dish-btn').addEventListener('click', function() {
+            var newDishesContainer = document.getElementById('new-dishes');
+            if(newDishesContainer.children.length>0){
+                newDishesContainer.lastElementChild.remove();
+            }
         });
     </script>
 </body>
