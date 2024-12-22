@@ -115,3 +115,9 @@ VALUES (3,9),
 
 
 SELECT d.id_dish,d.name,d.type FROM menu m,dish d,menu_dish_relation r WHERE m.id_menu = r.menu_id and d.id_dish = r.dish_id;
+
+
+insert into reservations(status,reservation_date,id_user,id_menu)
+VALUES("Pending","2011-12-18 13:17:17",34,4),
+("Accepted","2011-12-18 13:17:17",34,7),
+("Declined","2011-12-18 13:17:17",34,14);
