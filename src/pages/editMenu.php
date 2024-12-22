@@ -1,6 +1,9 @@
 <?php
 include "dbcon.php";
 
+  include "redirect.php";
+  redirect();
+
 if (isset($_GET['id_menu'])) {
     $menuId = $_GET['id_menu'];
     

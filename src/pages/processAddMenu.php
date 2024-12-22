@@ -1,6 +1,10 @@
 <?php
 include "dbcon.php";
 
+include "redirect.php";
+redirect();
+
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     
     $menuName = $_POST['menu_name'];

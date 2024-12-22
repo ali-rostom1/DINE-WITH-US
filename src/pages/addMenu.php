@@ -1,4 +1,7 @@
-
+<?php
+  include "redirect.php";
+  redirect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

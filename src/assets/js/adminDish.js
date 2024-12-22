@@ -1,7 +1,7 @@
 document.querySelectorAll(".dish-card").forEach((el)=>{
     el.addEventListener("click",()=>{
-        document.getElementById("edit").href = `editDish.php?id_menu=${el.id}`;
-        document.getElementById('del').href = `deleteDish.php?id_menu=${el.id}`;
+        document.getElementById("edit").href = `editDish.php?id_dish=${el.id}`;
+        document.getElementById('del').href = `processDeleteDish.php?id_dish=${el.id}`;
     })
 })
 
