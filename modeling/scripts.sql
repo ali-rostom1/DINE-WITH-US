@@ -95,3 +95,23 @@ VALUES(1,"menu1","menu1 is a great menu","assets/images/placeholder.jpg"),
 (32,"menu4","menu4 is a great menu","assets/images/placeholder.jpg"),
 (32,"menu5","menu5 is a great menu","assets/images/placeholder.jpg"),
 (32,"menu6","menu6 is a great menu","assets/images/placeholder.jpg");
+
+INSERT INTO dish(name,description,type,img_URL) 
+VALUES("dish1","dish1 is really great","starter","assets/images/placeholder.jpg"),
+("dish2","dish2 is really great","starter","assets/images/placeholder.jpg"),
+("dish3","dish3 is really great","main","assets/images/placeholder.jpg"),
+("dish4","dish4 is really great","main","assets/images/placeholder.jpg"),
+("dish5","dish5 is really great","dessert","assets/images/placeholder.jpg"),
+("dish6","dish6 is really great","dessert","assets/images/placeholder.jpg");
+
+INSERT into menu_dish_relation
+VALUES (2,8),
+(2,10),
+(2,12);
+INSERT into menu_dish_relation
+VALUES (3,9),
+(3,11),
+(3,13);
+
+
+SELECT d.id_dish,d.name,d.type FROM menu m,dish d,menu_dish_relation r WHERE m.id_menu = r.menu_id and d.id_dish = r.dish_id;

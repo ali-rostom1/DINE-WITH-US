@@ -31,7 +31,7 @@
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold text-red-500">Dine With Us</a>
       <div class="hidden md:flex space-x-6">
-        <a href="#menu" class="hover:text-red-500">Menu</a>
+        <a href="pages/menu.php" class="hover:text-red-500">Menu</a>
         <a href="#about" class="hover:text-red-500">About Us</a>
         <a href="#contact" class="hover:text-red-500">Contact</a>
       </div>
@@ -66,7 +66,7 @@
   <!-- Menu Section -->
   <section id="menu" class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-      <h2 class="text-4xl text-center font-bold mb-12">Our chefs</h2>
+      <h2 class="text-4xl text-center font-bold mb-12">Our menus</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <?php
           include "pages/dbcon.php";
@@ -108,7 +108,7 @@
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-4xl font-bold mb-6">Contact Us</h2>
       <p class="text-gray-600 mb-8">Have questions or want to make a reservation? Contact us!</p>
-      <a href="mailto:contact@restaurant.com" class="text-lg bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-600 transition">Email Us</a>
+      <a href="mailto:ali.rostom220@gmail.com" class="text-lg bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-600 transition">Email Us</a>
     </div>
   </section>
 
