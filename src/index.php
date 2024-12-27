@@ -81,7 +81,7 @@
             }else {
               $imageDataUrl = $el['url_img'];
             }
-            echo '<a id="'.$el["username"].'" class="bg-white p-6 shadow-md rounded-lg" href="reservation.php?id_menu='.$el['id_menu'].'">
+            echo '<a id="'.$el["username"].'" class="bg-white p-6 shadow-md rounded-lg" href="pages/reservation.php?id_menu='.$el['id_menu'].'">
                     <img src="'.$imageDataUrl.'" alt="'.$el["name"].'" class="w-full h-48 object-cover mb-4 rounded">
                     <h3 class="text-2xl font-semibold mb-2">'.$el["name"].'</h3>
                     <p class="text-gray-600 mb-4">'.$el["description"].'.</p>

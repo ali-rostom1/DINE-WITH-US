@@ -1,4 +1,5 @@
 <?php
+  include "dbcon.php";
   include "redirect.php";
   redirect();
 ?>
@@ -43,6 +44,17 @@
         <div class="max-w-5xl h-full mx-auto px-4 py-4 flex flex-col items-center gap-10">
             <div class="absolute inset-0 bg-opacity-30 bg-black"></div>
             <span class="mt-10 font-bold text-4xl text-blue-500 z-10">Reservations</span>
+            <?php
+              $currentChef = $_COOKIE["user"];
+              $sql = "Select count(*) from reservations,menu where id_user=?";
+              $stmt = $mysqli->prepare($sql);
+              $stmt->bind_param("i",$currentChef);
+              $stmt->execute();
+              $res =$stmt->get_result();
+              $res = $res->fetch_assoc();
+              echo '<p>number of total reservations: '.$res["count(*)"].'</p>';
+
+            ?>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -69,7 +81,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            include "dbcon.php";
+                            
                             $currentChef = $_COOKIE["user"];
                             $sql = "SELECT r.id_reservation,r.status,r.reservation_date,r.id_user,m.name FROM reservations r,menu m WHERE r.id_menu=m.id_menu and m.id_user=$currentChef";
                             $res = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);

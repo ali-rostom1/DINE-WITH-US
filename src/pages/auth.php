@@ -10,7 +10,7 @@
         if(password_verify($_POST['password'],$res["pass"])){
             setcookie("user",$res['id_user'],time() + (86400 * 30),'/');
             setcookie("isChef",$res['id_role']==1 ? 'true' : 'false',time() + (86400 * 30),'/');
-            if($_COOKIE["isChef"] == 'true'){
+            if($_COOKIE["isChef"]){
                 header("location: admin.php");
                 exit;
             }

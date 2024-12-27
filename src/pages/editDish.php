@@ -63,9 +63,9 @@
                 </div>
             </div>
             <div class="flex justify-end gap-10">
-                <button class="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                <a href="adminDish.php" class="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-green-500">
                     Cancel
-                </button>
+                </a>
                 <button type="submit" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-green-500">
                     Save Dish
                 </button>
